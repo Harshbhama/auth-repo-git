@@ -1,0 +1,41 @@
+{
+  "name": "auth-repo",
+  "version": "0.0.1",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && node scripts/build-package.js",
+    "build:cjs": "NODE_ENV=production BABEL_ENV=cjs babel src --presets=./scripts/babel-preset.js --extensions .js,.jsx --ignore src/**/*.spec.js --out-dir build/cjs --source-maps",
+    "build:esm": "NODE_ENV=production BABEL_ENV=esm babel src --presets=./scripts/babel-preset.js --extensions .js,.jsx --ignore src/**/*.spec.js --out-dir build/esm --source-maps"
+  },
+  "author": "harsh bhama",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harshbhama/auth-repo-git.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "build",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./src/index.js"
+    }
+  },
+  "dependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/preset-typescript": "^7.26.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
+    "@babel/preset-env": "^7.26.0"
+  }
+}
