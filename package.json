@@ -1,6 +1,6 @@
 {
-  "name": "auth-repo",
-  "version": "0.0.1",
+  "name": "@harshbhama/auth-repo-git",
+  "version": "0.0.2",
   "main": "index.js",
   "workspaces": [
     "packages/*"
